@@ -1,0 +1,770 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20151231 16:41:02.896" generator="Robot 2.9.1 (Python 2.7.6 on linux2)">
+<suite source="/var/lib/jenkins/jobs/STAGE_Aware_Email_BCE_Performance/workspace" id="s1" name="Workspace">
+<suite source="/var/lib/jenkins/jobs/STAGE_Aware_Email_BCE_Performance/workspace/tests" id="s1-s1" name="Tests">
+<suite source="/var/lib/jenkins/jobs/STAGE_Aware_Email_BCE_Performance/workspace/tests/aware" id="s1-s1-s1" name="Aware">
+<suite source="/var/lib/jenkins/jobs/STAGE_Aware_Email_BCE_Performance/workspace/tests/aware/email" id="s1-s1-s1-s1" name="Email">
+<suite source="/var/lib/jenkins/jobs/STAGE_Aware_Email_BCE_Performance/workspace/tests/aware/email/1__single.txt" id="s1-s1-s1-s1-s1" name="Single">
+<kw type="setup" name="Set Authorization By Path" library="EnvLibrary">
+<arguments>
+<arg>${PLATFORM}</arg>
+<arg>${PATH_TYPE}</arg>
+</arguments>
+<status status="PASS" endtime="20151231 16:41:03.321" starttime="20151231 16:41:03.248"></status>
+</kw>
+<test id="s1-s1-s1-s1-s1-t1" name="Aware Email 100k x 1 Delivery Performance [1]">
+<kw name="Convert To Integer" library="BuiltIn">
+<doc>Converts the given item to an integer number.</doc>
+<arguments>
+<arg>${MESSAGE_COUNT}</arg>
+</arguments>
+<assign>
+<var>${message_count}</var>
+</assign>
+<msg timestamp="20151231 16:41:03.323" level="INFO">${message_count} = 1</msg>
+<status status="PASS" endtime="20151231 16:41:03.323" starttime="20151231 16:41:03.322"></status>
+</kw>
+<kw name="Convert To Integer" library="BuiltIn">
+<doc>Converts the given item to an integer number.</doc>
+<arguments>
+<arg>${ATTEMPT_COUNT}</arg>
+</arguments>
+<assign>
+<var>${attempt_count}</var>
+</assign>
+<msg timestamp="20151231 16:41:03.324" level="INFO">${attempt_count} = 100000</msg>
+<status status="PASS" endtime="20151231 16:41:03.324" starttime="20151231 16:41:03.323"></status>
+</kw>
+<kw name="Convert To Integer" library="BuiltIn">
+<doc>Converts the given item to an integer number.</doc>
+<arguments>
+<arg>1</arg>
+</arguments>
+<assign>
+<var>${iteration}</var>
+</assign>
+<msg timestamp="20151231 16:41:03.324" level="INFO">${iteration} = 1</msg>
+<status status="PASS" endtime="20151231 16:41:03.324" starttime="20151231 16:41:03.324"></status>
+</kw>
+<kw name="Convert To Integer" library="BuiltIn">
+<doc>Converts the given item to an integer number.</doc>
+<arguments>
+<arg>${ATTEMPT_THROUGHPUT_SLO_EMAIL}</arg>
+</arguments>
+<assign>
+<var>${attempt_throughput_threshold}</var>
+</assign>
+<msg timestamp="20151231 16:41:03.325" level="INFO">${attempt_throughput_threshold} = 41667</msg>
+<status status="PASS" endtime="20151231 16:41:03.325" starttime="20151231 16:41:03.325"></status>
+</kw>
+<kw name="Aware Delivery Performance" library="common">
+<arguments>
+<arg>${GROUP_NAME}</arg>
+<arg>${PATH_TYPE}</arg>
+<arg>${message_count}</arg>
+<arg>${attempt_count}</arg>
+<arg>${iteration}</arg>
+<arg>${attempt_throughput_threshold}</arg>
+</arguments>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${ENV}</arg>
+</arguments>
+<msg timestamp="20151231 16:41:03.327" level="INFO">STAGE</msg>
+<status status="PASS" endtime="20151231 16:41:03.327" starttime="20151231 16:41:03.326"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Monitoring broadcast engine</arg>
+</arguments>
+<status status="PASS" endtime="20151231 16:41:03.328" starttime="20151231 16:41:03.327"></status>
+</kw>
+<kw name="Monitor BCE" library="common">
+<kw name="Convert To Integer" library="BuiltIn">
+<doc>Converts the given item to an integer number.</doc>
+<arguments>
+<arg>${SCHEDULE_INTERVAL}</arg>
+</arguments>
+<assign>
+<var>${schedule_interval}</var>
+</assign>
+<msg timestamp="20151231 16:41:03.329" level="INFO">${schedule_interval} = 4</msg>
+<status status="PASS" endtime="20151231 16:41:03.329" starttime="20151231 16:41:03.328"></status>
+</kw>
+<kw name="Convert To Boolean" library="BuiltIn">
+<doc>Converts the given item to Boolean true or false.</doc>
+<arguments>
+<arg>${MONITORING}</arg>
+</arguments>
+<assign>
+<var>${monitoring}</var>
+</assign>
+<msg timestamp="20151231 16:41:03.330" level="INFO">${monitoring} = False</msg>
+<status status="PASS" endtime="20151231 16:41:03.330" starttime="20151231 16:41:03.329"></status>
+</kw>
+<kw name="Convert To Boolean" library="BuiltIn">
+<doc>Converts the given item to Boolean true or false.</doc>
+<arguments>
+<arg>${MONITIORING_PHONE}</arg>
+</arguments>
+<assign>
+<var>${monitoring_phone}</var>
+</assign>
+<msg timestamp="20151231 16:41:03.331" level="INFO">${monitoring_phone} = False</msg>
+<status status="PASS" endtime="20151231 16:41:03.331" starttime="20151231 16:41:03.330"></status>
+</kw>
+<kw name="Wait Until Bce Is Available" library="BceLibrary">
+<arguments>
+<arg>${schedule_interval}</arg>
+<arg>${monitoring}</arg>
+<arg>${monitoring_phone}</arg>
+</arguments>
+<status status="PASS" endtime="20151231 13:43:29.433" starttime="20151231 16:41:03.331"></status>
+</kw>
+<status status="PASS" endtime="20151231 13:43:29.434" starttime="20151231 16:41:03.328"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Sending broadcast(s)</arg>
+</arguments>
+<status status="PASS" endtime="20151231 13:43:29.436" starttime="20151231 13:43:29.434"></status>
+</kw>
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>SEPARATOR=-</arg>
+<arg>${path_type}</arg>
+<arg>${group_name}</arg>
+<arg>${message_count}</arg>
+<arg>${iteration}</arg>
+</arguments>
+<assign>
+<var>${title}</var>
+</assign>
+<msg timestamp="20151231 13:43:29.439" level="INFO">${title} = EMAIL-100k-1-1</msg>
+<status status="PASS" endtime="20151231 13:43:29.439" starttime="20151231 13:43:29.437"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${TEXT_MESSAGE}</arg>
+</arguments>
+<assign>
+<var>${text_message}</var>
+</assign>
+<msg timestamp="20151231 13:43:29.441" level="INFO">${text_message} = 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000...</msg>
+<status status="PASS" endtime="20151231 13:43:29.441" starttime="20151231 13:43:29.440"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${path_type}' == 'PHONE'</arg>
+<arg>Convert To String</arg>
+<arg>${VOICE_FILE}</arg>
+</arguments>
+<assign>
+<var>${voice_file}</var>
+</assign>
+<msg timestamp="20151231 13:43:29.446" level="INFO">${voice_file} = None</msg>
+<status status="PASS" endtime="20151231 13:43:29.447" starttime="20151231 13:43:29.442"></status>
+</kw>
+<kw name="Send Concurrent Broadcasts" library="AwareApiLibrary">
+<arguments>
+<arg>messageTitle=${title}</arg>
+<arg>messageBody=${text_message}</arg>
+<arg>voiceFile=${voice_file}</arg>
+<arg>groupName=${group_name}</arg>
+<arg>contactType=${path_type}</arg>
+<arg>count=${message_count}</arg>
+</arguments>
+<assign>
+<var>${broadcast_ids}</var>
+</assign>
+<msg timestamp="20151231 13:43:34.191" level="INFO">${broadcast_ids} = [9504281L]</msg>
+<status status="PASS" endtime="20151231 13:43:34.192" starttime="20151231 13:43:29.447"></status>
+</kw>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<doc>Verifies that the given item is not empty.</doc>
+<arguments>
+<arg>${broadcast_ids}</arg>
+</arguments>
+<msg timestamp="20151231 13:43:34.194" level="INFO">Length is 1</msg>
+<status status="PASS" endtime="20151231 13:43:34.195" starttime="20151231 13:43:34.193"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>broadcastIds: ${broadcast_ids}</arg>
+</arguments>
+<status status="PASS" endtime="20151231 13:43:34.197" starttime="20151231 13:43:34.195"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Waiting for ${WAIT_TIME}</arg>
+</arguments>
+<status status="PASS" endtime="20151231 13:43:34.199" starttime="20151231 13:43:34.198"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>${WAIT_TIME}</arg>
+<arg>Wait before checking status</arg>
+</arguments>
+<msg timestamp="20151231 13:45:34.202" level="INFO">Slept 2 minutes</msg>
+<msg timestamp="20151231 13:45:34.202" level="INFO">Wait before checking status</msg>
+<status status="PASS" endtime="20151231 13:45:34.202" starttime="20151231 13:43:34.200"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Waiting for broadcast(s) to complete</arg>
+</arguments>
+<status status="PASS" endtime="20151231 13:45:34.203" starttime="20151231 13:45:34.202"></status>
+</kw>
+<kw name="Wait Until Broadcasts Are Complete" library="BceLibrary">
+<arguments>
+<arg>${broadcast_ids}</arg>
+<arg>broadcastId</arg>
+<arg>${attempt_count}</arg>
+</arguments>
+<msg timestamp="20151231 13:45:34.204" level="INFO">Waiting for broadcast to complete ...</msg>
+<msg timestamp="20151231 13:45:34.206" level="INFO">Starting new HTTP connection (1): start.eng.ebcolo.com</msg>
+<msg timestamp="20151231 13:46:12.238" level="INFO">Starting new HTTP connection (1): start.eng.ebcolo.com</msg>
+<msg timestamp="20151231 13:46:52.724" level="INFO">Starting new HTTP connection (1): start.eng.ebcolo.com</msg>
+<status status="PASS" endtime="20151231 13:47:01.960" starttime="20151231 13:45:34.203"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Retrieving broadcast results</arg>
+</arguments>
+<status status="PASS" endtime="20151231 13:47:01.961" starttime="20151231 13:47:01.960"></status>
+</kw>
+<kw name="Get Broadcast Delivery Performance Concurrent" library="BceLibrary">
+<arguments>
+<arg>${broadcast_ids}</arg>
+<arg>broadcastId</arg>
+</arguments>
+<assign>
+<var>${results}</var>
+</assign>
+<msg timestamp="20151231 13:47:01.963" level="INFO">Starting new HTTP connection (1): start.eng.ebcolo.com</msg>
+<msg timestamp="20151231 13:47:09.310" level="INFO">${results} = {'attempt_latency_avg': 5, 'initiate_latency': 15, 'attempt': 1, 'request_date': datetime.datetime(2015, 12, 31, 13, 56, 42), 'nvp': u'N', 'queues_per_min_max': 76287, 'site': u'BUR', 'broadcast_ids':...</msg>
+<status status="PASS" endtime="20151231 13:47:09.311" starttime="20151231 13:47:01.961"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>attempt throughput: ${results['attempts_per_min_avg']}</arg>
+</arguments>
+<status status="PASS" endtime="20151231 13:47:09.313" starttime="20151231 13:47:09.312"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>attempt throughput threshold: ${attempt_throughput_threshold}</arg>
+</arguments>
+<status status="PASS" endtime="20151231 13:47:09.315" starttime="20151231 13:47:09.314"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${results['attempts_per_min_avg']} &gt;= ${attempt_throughput_threshold}</arg>
+<arg>Passes if attempt throughput is at or above threshold</arg>
+</arguments>
+<status status="PASS" endtime="20151231 13:47:09.321" starttime="20151231 13:47:09.316"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Saving test</arg>
+</arguments>
+<status status="PASS" endtime="20151231 13:47:09.323" starttime="20151231 13:47:09.322"></status>
+</kw>
+<kw name="Report Test" library="common">
+<arguments>
+<arg>${results}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${REPORTING}</arg>
+<arg>Save Test</arg>
+<arg>${results}</arg>
+</arguments>
+<kw name="Save Test" library="ReportingLibrary">
+<arguments>
+<arg>${results}</arg>
+</arguments>
+<msg timestamp="20151231 13:47:09.334" level="INFO">Starting new HTTP connection (1): start.eng.ebcolo.com</msg>
+<msg timestamp="20151231 13:47:09.344" level="INFO">GET http://start.eng.ebcolo.com:9200/stage/release/_search [status:200 request:0.010s]</msg>
+<msg timestamp="20151231 13:47:09.347" level="INFO">stage-delivery-745778a3703739ef83179dda948c8b52</msg>
+<msg timestamp="20151231 13:47:09.347" level="INFO">{'attempt_latency_avg': 5, 'initiate_latency': 15, 'attempt': 1, 'request_date': datetime.datetime(2015, 12, 31, 13, 56, 42), 'nvp': u'N', 'queues_per_min_max': 76287, 'site': u'BUR', 'broadcast_ids': '9504281', 'attempts_per_min_max': 76458, 'platform': u'AWARE', 'total_attempts': 100000, 'attempts_per_min_avg': 72289, 'release_time': 1447804800, 'total_latency': 98, 'path_type': u'EMAIL', 'queues_per_min_avg': 75000, 'total_broadcasts': 1, 'release': u'5.1.0'}</msg>
+<msg timestamp="20151231 13:47:09.348" level="INFO">Starting new HTTP connection (1): start.eng.ebcolo.com</msg>
+<msg timestamp="20151231 13:47:09.362" level="INFO">PUT http://start.eng.ebcolo.com:9200/stage/delivery/745778a3703739ef83179dda948c8b52?timeout=30 [status:201 request:0.013s]</msg>
+<status status="PASS" endtime="20151231 13:47:09.363" starttime="20151231 13:47:09.330"></status>
+</kw>
+<status status="PASS" endtime="20151231 13:47:09.364" starttime="20151231 13:47:09.326"></status>
+</kw>
+<status status="PASS" endtime="20151231 13:47:09.364" starttime="20151231 13:47:09.324"></status>
+</kw>
+<status status="PASS" endtime="20151231 13:47:09.365" starttime="20151231 16:41:03.325"></status>
+</kw>
+<tags>
+<tag>1</tag>
+<tag>aware</tag>
+<tag>email</tag>
+<tag>single</tag>
+</tags>
+<status status="PASS" endtime="20151231 13:47:09.365" critical="yes" starttime="20151231 16:41:03.321"></status>
+</test>
+<test id="s1-s1-s1-s1-s1-t2" name="Aware Email 100k x 1 Delivery Performance [2]">
+<kw name="Convert To Integer" library="BuiltIn">
+<doc>Converts the given item to an integer number.</doc>
+<arguments>
+<arg>${MESSAGE_COUNT}</arg>
+</arguments>
+<assign>
+<var>${message_count}</var>
+</assign>
+<msg timestamp="20151231 13:47:09.371" level="INFO">${message_count} = 1</msg>
+<status status="PASS" endtime="20151231 13:47:09.371" starttime="20151231 13:47:09.370"></status>
+</kw>
+<kw name="Convert To Integer" library="BuiltIn">
+<doc>Converts the given item to an integer number.</doc>
+<arguments>
+<arg>${ATTEMPT_COUNT}</arg>
+</arguments>
+<assign>
+<var>${attempt_count}</var>
+</assign>
+<msg timestamp="20151231 13:47:09.373" level="INFO">${attempt_count} = 100000</msg>
+<status status="PASS" endtime="20151231 13:47:09.374" starttime="20151231 13:47:09.372"></status>
+</kw>
+<kw name="Convert To Integer" library="BuiltIn">
+<doc>Converts the given item to an integer number.</doc>
+<arguments>
+<arg>2</arg>
+</arguments>
+<assign>
+<var>${iteration}</var>
+</assign>
+<msg timestamp="20151231 13:47:09.376" level="INFO">${iteration} = 2</msg>
+<status status="PASS" endtime="20151231 13:47:09.376" starttime="20151231 13:47:09.374"></status>
+</kw>
+<kw name="Convert To Integer" library="BuiltIn">
+<doc>Converts the given item to an integer number.</doc>
+<arguments>
+<arg>${ATTEMPT_THROUGHPUT_SLO_EMAIL}</arg>
+</arguments>
+<assign>
+<var>${attempt_throughput_threshold}</var>
+</assign>
+<msg timestamp="20151231 13:47:09.378" level="INFO">${attempt_throughput_threshold} = 41667</msg>
+<status status="PASS" endtime="20151231 13:47:09.378" starttime="20151231 13:47:09.377"></status>
+</kw>
+<kw name="Aware Delivery Performance" library="common">
+<arguments>
+<arg>${GROUP_NAME}</arg>
+<arg>${PATH_TYPE}</arg>
+<arg>${message_count}</arg>
+<arg>${attempt_count}</arg>
+<arg>${iteration}</arg>
+<arg>${attempt_throughput_threshold}</arg>
+</arguments>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${ENV}</arg>
+</arguments>
+<msg timestamp="20151231 13:47:09.383" level="INFO">STAGE</msg>
+<status status="PASS" endtime="20151231 13:47:09.384" starttime="20151231 13:47:09.382"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Monitoring broadcast engine</arg>
+</arguments>
+<status status="PASS" endtime="20151231 13:47:09.385" starttime="20151231 13:47:09.384"></status>
+</kw>
+<kw name="Monitor BCE" library="common">
+<kw name="Convert To Integer" library="BuiltIn">
+<doc>Converts the given item to an integer number.</doc>
+<arguments>
+<arg>${SCHEDULE_INTERVAL}</arg>
+</arguments>
+<assign>
+<var>${schedule_interval}</var>
+</assign>
+<msg timestamp="20151231 13:47:09.389" level="INFO">${schedule_interval} = 4</msg>
+<status status="PASS" endtime="20151231 13:47:09.389" starttime="20151231 13:47:09.388"></status>
+</kw>
+<kw name="Convert To Boolean" library="BuiltIn">
+<doc>Converts the given item to Boolean true or false.</doc>
+<arguments>
+<arg>${MONITORING}</arg>
+</arguments>
+<assign>
+<var>${monitoring}</var>
+</assign>
+<msg timestamp="20151231 13:47:09.391" level="INFO">${monitoring} = False</msg>
+<status status="PASS" endtime="20151231 13:47:09.392" starttime="20151231 13:47:09.390"></status>
+</kw>
+<kw name="Convert To Boolean" library="BuiltIn">
+<doc>Converts the given item to Boolean true or false.</doc>
+<arguments>
+<arg>${MONITIORING_PHONE}</arg>
+</arguments>
+<assign>
+<var>${monitoring_phone}</var>
+</assign>
+<msg timestamp="20151231 13:47:09.394" level="INFO">${monitoring_phone} = False</msg>
+<status status="PASS" endtime="20151231 13:47:09.394" starttime="20151231 13:47:09.392"></status>
+</kw>
+<kw name="Wait Until Bce Is Available" library="BceLibrary">
+<arguments>
+<arg>${schedule_interval}</arg>
+<arg>${monitoring}</arg>
+<arg>${monitoring_phone}</arg>
+</arguments>
+<status status="PASS" endtime="20151231 13:47:29.418" starttime="20151231 13:47:09.395"></status>
+</kw>
+<status status="PASS" endtime="20151231 13:47:29.418" starttime="20151231 13:47:09.386"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Sending broadcast(s)</arg>
+</arguments>
+<status status="PASS" endtime="20151231 13:47:29.419" starttime="20151231 13:47:29.419"></status>
+</kw>
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>SEPARATOR=-</arg>
+<arg>${path_type}</arg>
+<arg>${group_name}</arg>
+<arg>${message_count}</arg>
+<arg>${iteration}</arg>
+</arguments>
+<assign>
+<var>${title}</var>
+</assign>
+<msg timestamp="20151231 13:47:29.421" level="INFO">${title} = EMAIL-100k-1-2</msg>
+<status status="PASS" endtime="20151231 13:47:29.421" starttime="20151231 13:47:29.420"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${TEXT_MESSAGE}</arg>
+</arguments>
+<assign>
+<var>${text_message}</var>
+</assign>
+<msg timestamp="20151231 13:47:29.422" level="INFO">${text_message} = 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000...</msg>
+<status status="PASS" endtime="20151231 13:47:29.422" starttime="20151231 13:47:29.421"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${path_type}' == 'PHONE'</arg>
+<arg>Convert To String</arg>
+<arg>${VOICE_FILE}</arg>
+</arguments>
+<assign>
+<var>${voice_file}</var>
+</assign>
+<msg timestamp="20151231 13:47:29.424" level="INFO">${voice_file} = None</msg>
+<status status="PASS" endtime="20151231 13:47:29.424" starttime="20151231 13:47:29.422"></status>
+</kw>
+<kw name="Send Concurrent Broadcasts" library="AwareApiLibrary">
+<arguments>
+<arg>messageTitle=${title}</arg>
+<arg>messageBody=${text_message}</arg>
+<arg>voiceFile=${voice_file}</arg>
+<arg>groupName=${group_name}</arg>
+<arg>contactType=${path_type}</arg>
+<arg>count=${message_count}</arg>
+</arguments>
+<assign>
+<var>${broadcast_ids}</var>
+</assign>
+<msg timestamp="20151231 13:47:29.436" level="INFO">Starting new HTTPS connection (1): stage.everbridgec>Logs the given message to the console.</doc>
+<arguments>
+<arg>Monitoring broadcast engine</arg>
+</arguments>
+<status status="PASS" endtime="20151231 13:47:09.385" starttime="20151231 13:47:09.384"></status>
+</kw>
+<kw name="Monitor BCE" library="common">
+<kw name="Convert To Integer" library="BuiltIn">
+<doc>Converts the given item to an integer number.</doc>
+<arguments>
+<arg>${SCHEDULE_INTERVAL}</arg>
+</arguments>
+<assign>
+<var>${schedule_interval}</var>
+</assign>
+<msg timestamp="20151231 13:47:09.389" level="INFO">${schedule_interval} = 4</msg>
+<status status="PASS" endtime="20151231 13:47:09.389" starttime="20151231 13:47:09.388"></status>
+</kw>
+<kw name="Convert To Boolean" library="BuiltIn">
+<doc>Converts the given item to Boolean true or false.</doc>
+<arguments>
+<arg>${MONITORING}</arg>
+</arguments>
+<assign>
+<var>${monitoring}</var>
+</assign>
+<msg timestamp="20151231 13:47:09.391" level="INFO">${monitoring} = False</msg>
+<status status="PASS" endtime="20151231 13:47:09.392" starttime="20151231 13:47:09.390"></status>
+</kw>
+<kw name="Convert To Boolean" library="BuiltIn">
+<doc>Converts the given item to Boolean true or false.</doc>
+<arguments>
+<arg>${MONITIORING_PHONE}</arg>
+</arguments>
+<assign>
+<var>${monitoring_phone}</var>
+</assign>
+<msg timestamp="20151231 13:47:09.394" level="INFO">${monitoring_phone} = False</msg>
+<status status="PASS" endtime="20151231 13:47:09.394" starttime="20151231 13:47:09.392"></status>
+</kw>
+<kw name="Wait Until Bce Is Available" library="BceLibrary">
+<arguments>
+<arg>${schedule_interval}</arg>
+<arg>${monitoring}</arg>
+<arg>${monitoring_phone}</arg>
+</arguments>
+<status status="PASS" endtime="20151231 13:47:29.418" starttime="20151231 13:47:09.395"></status>
+</kw>
+<status status="PASS" endtime="20151231 13:47:29.418" starttime="20151231 13:47:09.386"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Sending broadcast(s)</arg>
+</arguments>
+<status status="PASS" endtime="20151231 13:47:29.419" starttime="20151231 13:47:29.419"></status>
+</kw>
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>SEPARATOR=-</arg>
+<arg>${path_type}</arg>
+<arg>${group_name}</arg>
+<arg>${message_count}</arg>
+<arg>${iteration}</arg>
+</arguments>
+<assign>
+<var>${title}</var>
+</assign>
+<msg timestamp="20151231 13:47:29.421" level="INFO">${title} = EMAIL-100k-1-2</msg>
+<status status="PASS" endtime="20151231 13:47:29.421" starttime="20151231 13:47:29.420"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${TEXT_MESSAGE}</arg>
+</arguments>
+<assign>
+<var>${text_message}</var>
+</assign>
+<msg timestamp="20151231 13:47:29.422" level="INFO">${text_message} = 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000...</msg>
+<status status="PASS" endtime="20151231 13:47:29.422" starttime="20151231 13:47:29.421"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${path_type}' == 'PHONE'</arg>
+<arg>Convert To String</arg>
+<arg>${VOICE_FILE}</arg>
+</arguments>
+<assign>
+<var>${voice_file}</var>
+</assign>
+<msg timestamp="20151231 13:47:29.424" level="INFO">${voice_file} = None</msg>
+<status status="PASS" endtime="20151231 13:47:29.424" starttime="20151231 13:47:29.422"></status>
+</kw>
+<kw name="Send Concurrent Broadcasts" library="AwareApiLibrary">
+<arguments>
+<arg>messageTitle=${title}</arg>
+<arg>messageBody=${text_message}</arg>
+<arg>voiceFile=${voice_file}</arg>
+<arg>groupName=${group_name}</arg>
+<arg>contactType=${path_type}</arg>
+<arg>count=${message_count}</arg>
+</arguments>
+<assign>
+<var>${broadcast_ids}</var>
+</assign>
+<msg timestamp="20151231 13:47:34.136" level="INFO">${broadcast_ids} = [9504291L]</msg>
+<status status="PASS" endtime="20151231 13:47:34.136" starttime="20151231 13:47:29.425"></status>
+</kw>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<doc>Verifies that the given item is not empty.</doc>
+<arguments>
+<arg>${broadcast_ids}</arg>
+</arguments>
+<msg timestamp="20151231 13:47:34.139" level="INFO">Length is 1</msg>
+<status status="PASS" endtime="20151231 13:47:34.139" starttime="20151231 13:47:34.137"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>broadcastIds: ${broadcast_ids}</arg>
+</arguments>
+<status status="PASS" endtime="20151231 13:47:34.141" starttime="20151231 13:47:34.140"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Waiting for ${WAIT_TIME}</arg>
+</arguments>
+<status status="PASS" endtime="20151231 13:47:34.145" starttime="20151231 13:47:34.142"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>${WAIT_TIME}</arg>
+<arg>Wait before checking status</arg>
+</arguments>
+<msg timestamp="20151231 13:49:34.148" level="INFO">Slept 2 minutes</msg>
+<msg timestamp="20151231 13:49:34.148" level="INFO">Wait before checking status</msg>
+<status status="PASS" endtime="20151231 13:49:34.148" starttime="20151231 13:47:34.145"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Waiting for broadcast(s) to complete</arg>
+</arguments>
+<status status="PASS" endtime="20151231 13:49:34.150" starttime="20151231 13:49:34.149"></status>
+</kw>
+<kw name="Wait Until Broadcasts Are Complete" library="BceLibrary">
+<arguments>
+<arg>${broadcast_ids}</arg>
+<arg>broadcastId</arg>
+<arg>${attempt_count}</arg>
+</arguments>
+<msg timestamp="20151231 13:49:34.153" level="INFO">Waiting for broadcast to complete ...</msg>
+<msg timestamp="20151231 13:49:34.156" level="INFO">Starting new HTTP connection (1): start.eng.ebcolo.com</msg>
+<msg timestamp="20151231 13:50:10.683" level="INFO">Starting new HTTP connection (1): start.eng.ebcolo.com</msg>
+<msg timestamp="20151231 13:50:48.830" level="INFO">Starting new HTTP connection (1): start.eng.ebcolo.com</msg>
+<msg timestamp="20151231 13:51:28.279" level="INFO">Starting new HTTP connection (1): start.eng.ebcolo.com</msg>
+<status status="PASS" endtime="20151231 13:51:35.107" starttime="20151231 13:49:34.151"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Retrieving broadcast results</arg>
+</arguments>
+<status status="PASS" endtime="20151231 13:51:35.108" starttime="20151231 13:51:35.108"></status>
+</kw>
+<kw name="Get Broadcast Delivery Performance Concurrent" library="BceLibrary">
+<arguments>
+<arg>${broadcast_ids}</arg>
+<arg>broadcastId</arg>
+</arguments>
+<assign>
+<var>${results}</var>
+</assign>
+<msg timestamp="20151231 13:51:35.110" level="INFO">Starting new HTTP connection (1): start.eng.ebcolo.com</msg>
+<msg timestamp="20151231 13:51:42.367" level="INFO">${results} = {'attempt_latency_avg': 4, 'initiate_latency': 15, 'attempt': 1, 'request_date': datetime.datetime(2015, 12, 31, 14, 0, 42), 'nvp': u'N', 'queues_per_min_max': 37972, 'site': u'BUR', 'broadcast_ids': ...</msg>
+<status status="PASS" endtime="20151231 13:51:42.367" starttime="20151231 13:51:35.108"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>attempt throughput: ${results['attempts_per_min_avg']}</arg>
+</arguments>
+<status status="PASS" endtime="20151231 13:51:42.368" starttime="20151231 13:51:42.367"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>attempt throughput threshold: ${attempt_throughput_threshold}</arg>
+</arguments>
+<status status="PASS" endtime="20151231 13:51:42.369" starttime="20151231 13:51:42.368"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${results['attempts_per_min_avg']} &gt;= ${attempt_throughput_threshold}</arg>
+<arg>Passes if attempt throughput is at or above threshold</arg>
+</arguments>
+<msg timestamp="20151231 13:51:42.372" level="FAIL">Passes if attempt throughput is at or above threshold</msg>
+<status status="FAIL" endtime="20151231 13:51:42.372" starttime="20151231 13:51:42.369"></status>
+</kw>
+<status status="FAIL" endtime="20151231 13:51:42.372" starttime="20151231 13:47:09.379"></status>
+</kw>
+<tags>
+<tag>2</tag>
+<tag>aware</tag>
+<tag>email</tag>
+<tag>single</tag>
+</tags>
+<status status="FAIL" endtime="20151231 13:51:42.372" critical="yes" starttime="20151231 13:47:09.367">Passes if attempt throughput is at or above threshold</status>
+</test>
+<status status="FAIL" endtime="20151231 13:51:42.373" starttime="20151231 16:41:03.021"></status>
+</suite>
+<suite source="/var/lib/jenkins/jobs/STAGE_Aware_Email_BCE_Performance/workspace/tests/aware/email/2__concurrent.txt" id="s1-s1-s1-s1-s2" name="Concurrent">
+<test id="s1-s1-s1-s1-s2-t1" name="Aware Email 25k x 4 Delivery Performance [1]">
+<tags>
+<tag>1</tag>
+<tag>aware</tag>
+<tag>concurrent</tag>
+<tag>email</tag>
+<tag>robot-exit</tag>
+</tags>
+<status status="FAIL" endtime="20151231 13:51:42.377" critical="yes" starttime="20151231 13:51:42.376">Critical failure occurred and exit-on-failure mode is in use.</status>
+</test>
+<test id="s1-s1-s1-s1-s2-t2" name="Aware Email 25k x 4 Delivery Performance [2]">
+<tags>
+<tag>2</tag>
+<tag>aware</tag>
+<tag>concurrent</tag>
+<tag>email</tag>
+<tag>robot-exit</tag>
+</tags>
+<status status="FAIL" endtime="20151231 13:51:42.378" critical="yes" starttime="20151231 13:51:42.377">Critical failure occurred and exit-on-failure mode is in use.</status>
+</test>
+<status status="FAIL" endtime="20151231 13:51:42.378" starttime="20151231 13:51:42.375"></status>
+</suite>
+<status status="FAIL" endtime="20151231 13:51:42.380" starttime="20151231 16:41:03.018"></status>
+</suite>
+<status status="FAIL" endtime="20151231 13:51:42.381" starttime="20151231 16:41:03.015"></status>
+</suite>
+<status status="FAIL" endtime="20151231 13:51:42.383" starttime="20151231 16:41:03.013"></status>
+</suite>
+<status status="FAIL" endtime="20151231 13:51:42.384" starttime="20151231 16:41:02.900"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="3" pass="1">Critical Tests</stat>
+<stat fail="3" pass="1">All Tests</stat>
+</total>
+<tag>
+<stat info="combined" fail="1" combined="NOT robot-exit" pass="1">NOT robot-exit</stat>
+<stat fail="1" pass="1">1</stat>
+<stat fail="2" pass="0">2</stat>
+<stat fail="3" pass="1">aware</stat>
+<stat fail="2" pass="0">concurrent</stat>
+<stat fail="3" pass="1">email</stat>
+<stat fail="2" pass="0">robot-exit</stat>
+<stat fail="1" pass="1">single</stat>
+</tag>
+<suite>
+<stat fail="3" id="s1" name="Workspace" pass="1">Workspace</stat>
+<stat fail="3" id="s1-s1" name="Tests" pass="1">Workspace.Tests</stat>
+<stat fail="3" id="s1-s1-s1" name="Aware" pass="1">Workspace.Tests.Aware</stat>
+<stat fail="3" id="s1-s1-s1-s1" name="Email" pass="1">Workspace.Tests.Aware.Email</stat>
+<stat fail="1" id="s1-s1-s1-s1-s1" name="Single" pass="1">Workspace.Tests.Aware.Email.Single</stat>
+<stat fail="2" id="s1-s1-s1-s1-s2" name="Concurrent" pass="0">Workspace.Tests.Aware.Email.Concurrent</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
