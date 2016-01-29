@@ -1,0 +1,76 @@
+{% load_yaml as rawmap %}
+Debian:
+  pkgs:
+    - bind9
+  service:
+    name: bind9
+  user:
+    name: bind
+  group:
+    name: bind
+  vardir: /var/cache/bind
+  zonedir: /var/cache/bind/zones
+  config:
+    manage:
+      - defaults_file
+      - named_conf
+      - rndc_key
+      - options
+      - zoneconfigs
+    defaults_file:
+      path: /etc/default/bind9
+    named_conf:
+      path: /etc/bind/named.conf
+    rndc_key:
+      path: /etc/bind/rndc.key
+    localzones:
+      path: /etc/bind/zones.rfc1918
+    options:
+      path: /etc/bind/named.conf.options
+    zoneconfigs:
+      path: /etc/bind/named.conf.zones
+    zones: {}
+RedHat:
+  pkgs:
+    - bind
+    - bind-utils
+  service:
+    name: named
+  user:
+    name: root
+  group:
+    name: named
+  vardir: /var/named
+  zonedir: /var/named/data
+  config:
+    manage:
+      - named_conf
+      - rndc_key
+      - options
+      - zoneconfigs
+    named_conf:
+      path: /etc/named.conf
+      logging_channels:
+        - channel: simple_log
+          desttype: file
+          path: /var/log/named.log
+          versions: 3
+          size: 5m
+          severity: info
+          print_time: "yes"
+          print_severity: "yes"
+          print_category: "yes"
+      logging_categories:
+        - category: default
+          channels:
+            - simple_log
+    rndc_key:
+      path: /etc/rndc.key
+    localzones:
+      path: /etc/named.rfc1912.zones
+    options:
+      path: /etc/named.conf.options
+    zoneconfigs:
+      path: /etc/named.conf.local
+    zones: {}
+{% endload %}
